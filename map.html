@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>自定义数据地图</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Noto Sans", sans-serif;
+        background-color: #f0f0f0; /* 给页面一个背景色，突出地图盒子 */
+        display: flex; /* 启用 Flexbox 布局 */
+        justify-content: center; /* 水平居中 */
+        align-items: center; /* 垂直居中 */
+        min-height: 100vh; /* 确保 body 至少有视口高度，以便垂直居中生效 */
+      }
+      #map-container {
+        width: 90vw;  /* 地图容器宽度为视口宽度的90% */
+        height: 90vh; /* 地图容器高度为视口高度的90% */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* 给地图盒子一些阴影 */
+        border-radius: 8px; /* 可选：给地图盒子一些圆角 */
+        overflow: hidden; /* 确保 Leaflet 控件等不会溢出圆角 */
+      }
+      /* 基础弹窗样式 (可以根据你的设计进一步美化) */
+      .leaflet-popup-content-wrapper {
+        background: #f8f5f0; /* 示例背景色 */
+        color: #3a3a3a;
+        border-radius: 6px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+      .leaflet-popup-content {
+        font-size: 14px;
+        line-height: 1.7;
+        padding: 10px;
+      }
+      .leaflet-popup-content b {
+        font-family: "Noto Serif", serif;
+        color: #2c2c2c;
+        font-size: 16px;
+        display: block;
+        margin-bottom: 5px;
+      }
+      .leaflet-popup-tip {
+        background: #f8f5f0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map-container"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // 1. 初始化地图
+        const map = L.map("map-container").setView([30.5, 112.3], 5);
+
+        // 2. 添加瓦片图层
+        L.tileLayer(
+          "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+          {
+            attribution:
+              '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: "abcd",
+            maxZoom: 19,
+            minZoom: 3,
+          }
+        ).addTo(map);
+
+        // 3. 准备自定义数据
+        const customLocations = [
+          {
+            id: 1,
+            name: "长安",
+            latitude: 34.26,
+            longitude: 108.95,
+            poem: "春风得意马蹄疾，一日看尽长安花。",
+            author: "孟郊",
+          },
+          {
+            id: 2,
+            name: "赤壁",
+            latitude: 29.86,
+            longitude: 113.58,
+            poem: "东风不与周郎便，铜雀春深锁二乔。",
+            author: "杜牧",
+          },
+          {
+            id: 3,
+            name: "黄鹤楼",
+            latitude: 30.55,
+            longitude: 114.3,
+            poem: "昔人已乘黄鹤去，此地空余黄鹤楼。",
+            author: "崔颢",
+          },
+        ];
+
+        const processedData = customLocations.map((d) => {
+          return {
+            lat: parseFloat(d.latitude),
+            lon: parseFloat(d.longitude),
+            title: d.name,
+            text: d.poem,
+            source: d.author,
+          };
+        });
+
+        // 4. 将数据点添加到地图上并绑定弹窗
+        processedData.forEach(function(location) {
+            const markerOptions = {
+                radius: 6,
+                fillColor: "#333333",
+                color: "#000000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };
+
+            const circleMarker = L.circleMarker([location.lat, location.lon], markerOptions)
+                .addTo(map);
+
+            const popupContent = `<b>${location.title}</b><br>${location.text}<br><i>- ${location.source}</i>`;
+            circleMarker.bindPopup(popupContent);
+        });
+
+      });
+    </script>
+  </body>
+</html>

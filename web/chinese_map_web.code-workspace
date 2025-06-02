@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"name": "chinese_map_web",
+			"path": ".."
+		},
+		{
+			"name": "postman",
+			"path": "../../../../下载/Compressed/postman"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501,
+		"liveServer.settings.multiRootWorkspaceName": "chinese_map_web"
+	}
+}

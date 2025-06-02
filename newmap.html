@@ -1,0 +1,149 @@
+<html>
+ <head>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+  <link
+   rel="stylesheet"
+   as="style"
+   onload="this.rel='stylesheet'"
+   href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Serif%3Awght%40400%3B500%3B700%3B900&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+  />
+
+  <title>诗词地图 - 古道新声</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    body {
+      font-family: "Noto Sans", sans-serif; /* Default to Sans Serif for body */
+    }
+    h1, h2, h3, h4, h5, h6, .font-serif {
+      font-family: "Noto Serif", serif; /* Serif for headings and specific elements */
+    }
+    .hero-bg-image {
+      background-image: url('https://images.unsplash.com/photo-1526901980934-b587fd110009?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+    .decorative-image-fullwidth {
+      background-image: url('https://images.unsplash.com/photo-1542640240-9009992a9810?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 300px; /* Adjust height as needed */
+    }
+    .poem-image {
+      background-size: cover;
+      background-position: center;
+      min-height: 120px; /* Ensure image has some height */
+    }
+  </style>
+ </head>
+ <body class="bg-[#f8f5f0] text-[#3a3a3a]">
+  <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+   <div class="layout-container flex h-full grow flex-col">
+    <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e0e0e0] px-6 sm:px-10 py-4 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+     <div class="flex flex-col">
+      <h1 class="text-xl font-serif font-bold text-[#3a3a3a]">Poetry Map</h1>
+      <p class="text-xs font-serif text-[#555555] -mt-1">古道新声</p>
+     </div>
+     <div class="flex items-center gap-6 sm:gap-8">
+      <nav class="flex items-center gap-4 sm:gap-6 text-sm">
+       <a class="text-[#3a3a3a] hover:text-[#5e5e5e] font-medium" href="#">主页</a>
+       <a class="text-[#3a3a3a] hover:text-[#5e5e5e] font-medium" href="#">探索</a>
+       <a class="text-[#3a3a3a] hover:text-[#5e5e5e] font-medium" href="#">关于</a>
+      </nav>
+      <div class="flex items-center gap-3 sm:gap-4">
+        <button class="text-[#3a3a3a] hover:text-[#5e5e5e]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256"><path d="M216.69,114.39,192.4,101.8a64.31,64.31,0,0,0-6.56-10.13l12-22.54a16,16,0,0,0-6.91-21.81L175.22,37.2a16,16,0,0,0-21.54,1.86l-16.34,18.69a63.43,63.43,0,0,0-18.72,0L102.28,39.06a16,16,0,0,0-21.54-1.86L65.07,47.32a16,16,0,0,0-6.91,21.81l12,22.54a64.31,64.31,0,0,0-6.56,10.13L39.31,114.39a16,16,0,0,0,0,27.22l24.29,12.59a64.31,64.31,0,0,0,6.56,10.13l-12,22.54a16,16,0,0,0,6.91,21.81l15.71,10.12a16,16,0,0,0,21.54-1.86l16.34-18.69a63.43,63.43,0,0,0,18.72,0l16.34,18.69a16,16,0,0,0,21.54,1.86l15.71-10.12a16,16,0,0,0,6.91-21.81l-12-22.54a64.31,64.31,0,0,0,6.56-10.13l24.29-12.59A16,16,0,0,0,216.69,114.39ZM128,160a32,32,0,1,1,32-32A32,32,0,0,1,128,160Z"></path></svg>
+        </button>
+        <button class="text-[#3a3a3a] hover:text-[#5e5e5e]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24a104,104,0,1,0,104,104A104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm0-160a16,16,0,1,0,16,16A16,16,0,0,0,128,56Zm0,32a16,16,0,1,0,16,16A16,16,0,0,0,128,88Zm0,32a16,16,0,1,0,16,16A16,16,0,0,0,128,120Z"></path></svg>
+        </button>
+      </div>
+     </div>
+    </header>
+
+    <main class="flex-1">
+     <section class="hero-bg-image min-h-[380px] sm:min-h-[450px] flex items-center justify-center p-4">
+      <div class="w-full max-w-lg">
+       <label class="flex flex-col">
+        <div class="flex w-full items-stretch rounded-lg h-12 shadow-lg bg-white/90">
+         <div
+          class="text-[#777777] flex items-center justify-center pl-4"
+         >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+           <path
+            d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+           ></path>
+          </svg>
+         </div>
+         <input
+          placeholder="搜索地点"
+          class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden text-[#3a3a3a] focus:outline-0 focus:ring-0 border-none bg-transparent h-full placeholder:text-[#777777] px-3 text-base font-normal leading-normal"
+          value=""
+         />
+        </div>
+       </label>
+      </div>
+     </section>
+
+     <section class="decorative-image-fullwidth my-8 sm:my-12">
+       </section>
+
+     <div class="px-4 sm:px-6 lg:px-8 py-5 max-w-5xl mx-auto">
+      <div class="layout-content-container flex flex-col flex-1">
+       <section class="mb-10 sm:mb-16">
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#3a3a3a] mb-6 sm:mb-8 text-center">推荐诗句</h2>
+        
+        <div class="space-y-8">
+         <div class="flex flex-col sm:flex-row items-stretch gap-4 sm:gap-6 bg-white p-4 sm:p-6 rounded-lg shadow-md">
+          <div class="flex flex-col gap-2 flex-[3_3_0px]">
+           <h3 class="text-[#3a3a3a] text-xl font-serif font-semibold leading-tight">望月怀远</h3>
+           <h4>张九龄</h4>
+           <p class="text-[#555555] text-sm font-normal leading-relaxed font-sans">
+            海上生明月，天涯共此时。<br/>
+            情人怨遥夜，竟夕起相思。<br/>
+            灭烛怜光满，披衣觉露滋。<br/>
+            不堪盈手赠，还寝梦佳期。
+           </p>
+           <a href="#" class="text-sm text-[#4a7c59] hover:text-[#63a878] font-medium mt-2 self-start font-sans">阅读更多 &rarr;</a>
+          </div>
+          <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl flex-1" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDXazXiva0nytvai64Eov2tWBdiN97R7MPWaDErC2GmYQnLTdreqEjOY51z5gbE_NiRIjG7Of3ysTJ6IKXZn9jNyoQyBEKhjy8R1eHA8NVsTYym98BDWK52ZU9tzMYDK5zsAH_Erq2H_ehElZmhaNpwCKAS0Z-UY9hOsEHIjM1ujx6TWc8wHqeexuhpByQg0xJ6cG8JaebaqvOFGVaTQR-YeNOzOphhBNKjKWtVryqdeMB62aons71ypF6kDvYPhS05F7HAYSwr0JjE&quot;);"></div>
+         </div>
+
+         <div class="flex flex-col sm:flex-row items-stretch gap-4 sm:gap-6 bg-white p-4 sm:p-6 rounded-lg shadow-md">
+          <div class="flex flex-col gap-2 flex-[3_3_0px]">
+           <h3 class="text-[#3a3a3a] text-xl font-serif font-semibold leading-tight">赋得古原草送别</h3>
+           <p class="text-[#777777] text-xs font-normal mb-1 font-sans">白居易</p>
+           <p class="text-[#555555] text-sm font-normal leading-relaxed font-sans">
+            离离原上草，一岁一枯荣。<br/>
+            野火烧不尽，春风吹又生。<br/>
+            远芳侵古道，晴翠接荒城。
+           </p>
+           <a href="#" class="text-sm text-[#4a7c59] hover:text-[#63a878] font-medium mt-2 self-start font-sans">阅读更多 &rarr;</a>
+          </div>
+          <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl flex-1" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBwtMkTnuB6GvwNBwh2qwIXw2UAbwJhYIbH1aalfLIPrL6Vm_lTM3udkTmXff1b9VXAV46WMmp1oTc3pjkDYmO_oj8Lowp_S468mJ3PxwKhUH3G_Z8FTADroAz4bv3RHF-iwN4_2eCvDy9GcBXMoTMYh4ZZ9AcGHYknfa1czBCkkp3fA9nWKGBBRSCheFL-ip43v1m92arQzqRMso0KOdy-sVyJiQ7GXckVWIhOXZ3dsRSRt8JFa6hfs7UfVBrLTUi-BJHfbTUE0in-&quot;);"></div>
+         </div>
+        </div>
+       </section>
+
+       <section class="mb-10 sm:mb-16">
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#3a3a3a] mb-6 sm:mb-8 text-center">关于梅关古道</h2>
+        <div class="bg-white p-6 sm:p-8 rounded-lg shadow-md">
+         <p class="text-[#3a3a3a] text-base font-normal leading-loose tracking-wide font-sans text-justify">
+          梅关古道位于中国江西省大余县和广东省南雄市交界处的梅岭上，是唐朝名相张九龄于716年所开凿。秦代，秦始皇遣军五十万用于统一岭南从而谪道，于梅岭设关，称“横浦关”。唐开元四年间，始建“梅岭古道”，而且关于广州设立市舶司，其所带来的经济利益和海内外商贸发现，使当时的岭南的经济社会结构、岭南地区的中原交通需求不断攀升，岭南地区的经济、文化与中原地区往来通道不畅。岭南要发展中原须以为“富庶之地”，因而人民则将梅岭称作“化外之境”......
+         </p>
+        </div>
+       </section>
+
+      </div>
+     </div>
+    </main>
+
+    <footer class="text-center py-8 border-t border-solid border-b-[#e0e0e0] mt-auto">
+        <p class="text-sm text-[#777777]">&copy; 2025 诗词地图 - 古道新声. 版权所有.</p>
+    </footer>
+
+   </div>
+  </div>
+ </body>
+</html>
